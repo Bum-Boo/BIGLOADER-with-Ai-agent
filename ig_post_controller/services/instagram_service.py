@@ -273,8 +273,12 @@ class InstagramService:
         items: list[dict[str, Any]] = []
         seen_codes: set[str] = set()
         next_max_id: str | None = None
+        requested_cursors: set[str | None] = set()
 
         while len(items) < count:
+            if next_max_id in requested_cursors:
+                break
+            requested_cursors.add(next_max_id)
             page_items, next_max_id = self._fetch_feed_page(username, next_max_id=next_max_id)
             if not page_items:
                 break
