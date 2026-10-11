@@ -8,6 +8,8 @@ BIGLOADEB is a Windows desktop app for collecting and managing public Instagram 
 
 It is designed for older, non-technical staff and focuses on a simple account-first workflow, clear feeds, and predictable local folder organization.
 
+![Combined feed of the registered accounts, each post with a download button](docs/demo-screenshots/bigloadeb-use-02-feed-result.png)
+
 ## Safety and privacy
 
 - Use the app only for public Instagram content that you are authorized to access and download.

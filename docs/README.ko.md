@@ -8,6 +8,8 @@ BIGLOADEB는 여러 business/client account의 public Instagram posts를 수집�
 
 나이가 있거나 기술에 익숙하지 않은 staff도 사용할 수 있도록 account-first workflow, 명확한 feed, 예측 가능한 local folder organization에 초점을 둡니다.
 
+![등록한 계정의 게시물을 모아 보여 주고, 게시물마다 다운로드 버튼이 있는 피드 화면](demo-screenshots/bigloadeb-use-02-feed-result.png)
+
 ## Safety / Privacy Boundaries
 
 - public 또는 authorized content만 대상으로 합니다.
