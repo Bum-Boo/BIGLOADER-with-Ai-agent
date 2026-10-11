@@ -335,13 +335,15 @@ class DownloadService:
                 return False
             folder_path = row["folder_path"]
             shortcode = row["shortcode"]
+            # A locked or unavailable folder must keep its tracking record so
+            # the user can retry deletion after fixing the filesystem error.
+            if folder_path:
+                self._remove_owned_path(Path(folder_path), expected_shortcode=shortcode)
             connection.execute(
                 "DELETE FROM downloads WHERE post_id = ?",
                 (post_id,),
             )
 
-        if folder_path:
-            self._remove_owned_path(Path(folder_path), expected_shortcode=shortcode)
         return True
 
     def download_post(
