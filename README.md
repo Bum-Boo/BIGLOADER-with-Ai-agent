@@ -119,6 +119,11 @@ Repeated or cycling provider cursors return the unique posts collected so far;
 duplicate posts on a new cursor can still lead to later pages. This does not
 bound a provider that keeps returning distinct cursors indefinitely.
 
+Installer download bytes are checked against a supplied SHA256 before writing
+the destination. A failed download or hash mismatch preserves any previous
+installer and creates no destination directory. Subsequent file write errors
+and concurrent destination writers retain the existing behavior.
+
 ## Attribution
 
 If you share a fork, demo, article, or derivative, a courteous mention of [@Bum-Boo](https://github.com/Bum-Boo) and the original repository is appreciated. This is a request for credit, not an additional license condition or restriction.
