@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 import sqlite3
-from contextlib import contextmanager
+from contextlib import closing, contextmanager
 from datetime import datetime
 from pathlib import Path
 import shutil
@@ -20,7 +20,7 @@ class Database:
     def _backup_before_migration(self) -> None:
         if not self.db_path.is_file() or self.db_path.stat().st_size == 0:
             return
-        with sqlite3.connect(self.db_path) as connection:
+        with closing(sqlite3.connect(self.db_path)) as connection:
             version = int(connection.execute("PRAGMA user_version").fetchone()[0])
         if version >= self.SCHEMA_VERSION:
             return

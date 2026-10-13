@@ -96,14 +96,13 @@ class UpdateService:
         )
 
     def download_installer(self, installer_url: str, destination: Path, expected_sha256: str | None = None) -> Path:
-        destination.parent.mkdir(parents=True, exist_ok=True)
         data = self._download_url_bytes(installer_url)
-        destination.write_bytes(data)
         if expected_sha256:
             actual = hashlib.sha256(data).hexdigest().upper()
             if actual != expected_sha256.upper():
-                destination.unlink(missing_ok=True)
                 raise ValueError("Downloaded update installer failed SHA256 verification")
+        destination.parent.mkdir(parents=True, exist_ok=True)
+        destination.write_bytes(data)
         return destination
 
     def launch_installer(self, installer_path: Path) -> subprocess.Popen:
